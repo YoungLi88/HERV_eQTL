@@ -1,0 +1,9 @@
+from statsmodels.stats.multitest import multipletests
+import pandas as pd
+import sys
+celltype = sys.argv[1]
+df = pd.read_csv(f"./{celltype}/{celltype}_gene_out.smr",sep = "\t")
+pvalues = df['p_SMR']
+_, qvalues, _, _ = multipletests(pvalues, method='fdr_bh')
+df['qvalue'] = qvalues
+df.to_csv(f"./{celltype}/{celltype}_gene_out_qvalue.smr",sep = "\t")

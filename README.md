@@ -1,1 +1,1 @@
-# HERV_eQTL
+# HERV_eQTL analysis script
